@@ -3,8 +3,6 @@ function crack() {
     paste = paste.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/\W+/);
     document.getElementsByTagName('body')[0].innerHTML = "";
 
-    paste.forEach(word => wordSearch(word));    
-
     function wordSearch(word, def = 0) {
         
         console.log(word);
@@ -46,8 +44,10 @@ function crack() {
 
         xhr.send();
     }
-document.querySelectorAll("dl").forEach(e => e.remove());
-                    document.querySelectorAll("ul").forEach(e => e.remove());
-                    document.querySelectorAll(".thumbinner").forEach(e => e.remove());
+    
+    paste.forEach(word => wordSearch(word));    
+    document.querySelectorAll("dl").forEach(e => e.remove());
+    document.querySelectorAll("ul").forEach(e => e.remove());
+    document.querySelectorAll(".thumbinner").forEach(e => e.remove());
 
 }
