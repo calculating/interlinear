@@ -38,9 +38,6 @@ function crack() {
                     res = res.split('<h2><span class="mw-headline" id="Latin">', 2)[1];
                     res = res.substring(res.split(/(noun<\/span><span class="mw-editsection">|pronoun<\/span><span class="mw-editsection">|verb<\/span><span class="mw-editsection">|adjective<\/span><span class="mw-editsection">|adverb<\/span><span class="mw-editsection">|preposition<\/span><span class="mw-editsection">|conjunction<\/span><span class="mw-editsection">|interjection<\/span><span class="mw-editsection">)/i)[0].lastIndexOf("<h"), res.length);
                     res = res.substring(0, res.search('</ol>'));
-                    res = res.replace('edit', '');
-                    res = res.replace('[', '');
-                    res = res.replace(']', '');
                     document.getElementsByTagName('body')[0].innerHTML += '<div style="width:17%; padding-right:3%; font-size:12px; float:left;"><h2>' + ogw + '</h2>'+res+'</div>';
                 } else {
                     document.getElementsByTagName('body')[0].innerHTML += '<div style="width:17%; padding-right:3%; font-size:12px; float:left;"><h2>' + ogw + '</h2>undefined</div>';
