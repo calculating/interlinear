@@ -24,7 +24,7 @@ function crack() {
                     res = res.split('/')[2].split('#Latin')[0];
                     console.log('next word is ' + res);
                     wordSearch(res, 1);
-                } else {
+                } else if (res.includes('<h2><span class="mw-headline')){
                     res = res.split('<h2><span class="mw-headline" id="Latin">', 2)[1];
                     res = res.substring(res.split(/[noun|pronoun|verb|adjective|adverb|preposition|conjunction|interjection]<\/span><span class="mw-editsection">/i)[0].lastIndexOf("<h"), res.length);
                     res = res.substring(0, res.search('</ol>'));
