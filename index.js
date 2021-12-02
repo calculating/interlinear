@@ -18,10 +18,12 @@ function crack() {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 raw = xhr.responseText;
-                if (typeof JSON.parse(xhr.responseText)['parse']['text']['*'] == "undefined") {
-                    break;
+                if (typeof JSON.parse(xhr.responseText)['parse']['text']['*'] != "undefined") {
+                    res = JSON.parse(xhr.responseText)['parse']['text']['*'];
+                }else{
+                    res = "oop";
                 }
-                res = JSON.parse(xhr.responseText)['parse']['text']['*'];
+                
                 if (raw.includes('Latin_non-lemma_forms') && def == 0) {
                     res = res.substring(res.indexOf('form-of'), res.length).split('class="Latn mention" lang="la"')[1].split('href')[1].split('"', 3)[1];
                     res = res.split('/')[2].split('#Latin')[0];
