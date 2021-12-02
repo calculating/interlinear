@@ -1,5 +1,5 @@
 function crack() {
-    paste = document.getElementsByName('paste')[0].value;
+    paste = document.getElementsByName('latinpaste')[0].value;
     paste = paste.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/\W+/);
     document.getElementsByTagName('body')[0].innerHTML = "";
 
