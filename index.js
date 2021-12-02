@@ -1,6 +1,3 @@
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 function crack() {
     paste = document.getElementsByName('latinpaste')[0].value;
     paste = paste.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/\W+/);
@@ -12,7 +9,7 @@ function crack() {
         var url = "https://en.wiktionary.org/w/api.php?action=parse&page=" + word + "&format=json&origin=*";
 
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", url);
+        xhr.open("GET", url, false);
 
         xhr.setRequestHeader("Accept", "*/*");
 
@@ -67,7 +64,6 @@ function crack() {
 
     for (var i = 0; i < paste.length; i++) {
         wordSearch(paste[i]);
-        await sleep(1000);
     }
 
 }
