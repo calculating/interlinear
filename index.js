@@ -4,8 +4,12 @@ function crack() {
     console.log(paste);
     document.getElementsByTagName('body')[0].innerHTML = "";
 
-    function wordSearch(word, def = 0) {
+    function wordSearch(word, def = 0, ogw = 0) {
 
+        if (ogw == 0) {
+            ogw = word;
+        }
+        
         var url = "https://en.wiktionary.org/w/api.php?action=parse&page=" + word + "&format=json&origin=*";
 
         var xhr = new XMLHttpRequest();
@@ -29,14 +33,14 @@ function crack() {
                     res = res.substring(res.indexOf('form-of'), res.length).split('class="Latn mention" lang="la"')[1].split('href')[1].split('"', 3)[1];
                     res = res.split('/')[2].split('#Latin')[0];
                     //console.log('next word is ' + res);
-                    wordSearch(res, 1);
+                    wordSearch(res, 1, word);
                 } else if (res.includes('<h2><span class="mw-headline" id="Latin">')) {
                     res = res.split('<h2><span class="mw-headline" id="Latin">', 2)[1];
                     res = res.substring(res.split(/(noun<\/span><span class="mw-editsection">|pronoun<\/span><span class="mw-editsection">|verb<\/span><span class="mw-editsection">|adjective<\/span><span class="mw-editsection">|adverb<\/span><span class="mw-editsection">|preposition<\/span><span class="mw-editsection">|conjunction<\/span><span class="mw-editsection">|interjection<\/span><span class="mw-editsection">)/i)[0].lastIndexOf("<h"), res.length);
                     res = res.substring(0, res.search('</ol>'));
-                    document.getElementsByTagName('body')[0].innerHTML += '<div style="width:20%; font-size:12px; float:left;"><h2>' + word + '</h2>'+res+'</div>';
+                    document.getElementsByTagName('body')[0].innerHTML += '<div style="width:20%; font-size:12px; float:left;"><h2>' + ogw + '</h2>'+res+'</div>';
                 } else {
-                    document.getElementsByTagName('body')[0].innerHTML += '<div style="width:20%; font-size:12px; float:left;"><h2>' + word + '</h2>undefined</div>';
+                    document.getElementsByTagName('body')[0].innerHTML += '<div style="width:20%; font-size:12px; float:left;"><h2>' + ogw + '</h2>undefined</div>';
                 }
                 document.querySelectorAll("dl").forEach(e => e.remove());
                 document.querySelectorAll("ul").forEach(e => e.remove());
