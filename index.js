@@ -29,7 +29,7 @@ function crack() {
                 if (typeof res == 'undefined') {
                     console.log('error page')
                     if (word.substr(word.length - 3) == 'que') {
-                        //def_card(word.substr(0, word.length - 3), punc)
+                        def_card(word.substr(0, word.length - 3), punc)
                         return;
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
@@ -38,7 +38,7 @@ function crack() {
                         next_word = res.split('<span class="form-of-definition-link">')[1].split('<a href="/wiki/')[1].split('#Latin" title')[0]
                         form_trace = res.split('<span class=\"form-of-definition use-with-mention\">')[1].split('</span></li>')[0]
                         console.log('eghhh')
-                        //def_card(next_word, punc, form_trace);
+                        def_card(next_word, punc, form_trace);
                         return;
                     } else {
                         console.log(124432)
@@ -59,6 +59,7 @@ function crack() {
     }
 
     for (var i = 0; i < word_array.length; i++) {
+        console.log('eheh')
         def_card(word_array[i], punc_array[i]);
     }
 
