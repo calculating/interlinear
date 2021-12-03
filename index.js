@@ -39,8 +39,7 @@ function crack() {
                         wordSearch(next_word, punc, form_trace);
                     } else {
                         console.log('looking for definitions')
-                        regex = /(noun|pronoun|verb|adjective|adverb|preposition|conjunction|interjection)<\/span><span class="mw-editsection">/i,
-                            result, indices = [];
+                        var regex = /(noun|pronoun|verb|adjective|adverb|preposition|conjunction|interjection)<\/span><span class="mw-editsection">/i, result, indices = [];
                         while ((result = regex.exec(res))) {
                             indices.push(result.index);
                         }
