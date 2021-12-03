@@ -28,10 +28,13 @@ function crack() {
                         }
                     }
                 }
-
+                
+                single=true;
+                
                 if (typeof res == 'undefined') {
                     if (word.slice(word.length - 3) == 'que') {
                         def_card(word.slice(0, word.length - 3), punc)
+                        single=false;
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
                     res = res.split('<span class="mw-headline" id="Latin">')[1].split('<hr>')[0]
@@ -46,6 +49,7 @@ function crack() {
                         //console.log(form_trace)
                         //console.log(next_word)
                         def_card(next_word, punc, form_trace);
+                        single=false;
                     } else {
                         indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
                         console.log(word)
@@ -58,6 +62,8 @@ function crack() {
                             //console.log(content)
                         }
                         document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
+                    } else if (double){
+                        document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2></div>';
                     }
                 }                
 
