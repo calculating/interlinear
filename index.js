@@ -41,7 +41,7 @@ function crack() {
                         wordSearch(next_word, punc, form_trace);
                     } else {
                         console.log(124432)
-                        indices = [...thing.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
+                        indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
                         for (i = 0; i < indices.length; i++) {
                             console.log('grabbed definition block')
                             content += '<span>' + res.substr(indices[i]['index'], res.search('</ol>'))
