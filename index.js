@@ -50,6 +50,7 @@ function crack() {
                         for (ix = 0; ix < indices.length; ix++) {
                             console.log('grabbed definition block')
                             content += '<span>' + res.substr(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
+                            console.log(content)
                         }
 
                     }
