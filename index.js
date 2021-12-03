@@ -3,7 +3,10 @@ function crack() {
 
     word_array = paste.split(/\W+/);
     punc_array = paste.split(' ');
-
+    
+    console.log(word_array)
+    console.log(punc_array)
+    
     document.getElementsByTagName('body')[0].innerHTML = '';
 
     function def_card(word, punc, form_of = '') {
@@ -59,7 +62,7 @@ function crack() {
     }
 
     for (var i = 0; i < word_array.length; i++) {
-        console.log('eheh')
+        console.log('eheh'+i)
         def_card(word_array[i], punc_array[i]);
     }
 
