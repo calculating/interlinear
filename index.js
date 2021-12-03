@@ -58,6 +58,7 @@ function crack() {
                         
                         content = ''
                         for (const match of indices){
+                            console.log(match)
                             block = res.slice(match.index, res.search('</ol>',match.index))
                             content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)    
                         }
