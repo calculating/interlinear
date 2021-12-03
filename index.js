@@ -64,39 +64,37 @@ function crack() {
     }
     
     var inc = 0,
-       max = 9999;
-       delay = 100; // 100 milliseconds
+       delay = 10; // 100 milliseconds
 
    function timeoutLoop() {
-      def_card(word_array[inc], punc_array[inc]);
-      if (++inc < word_array.length)
-         setTimeout(timeoutLoop, delay);
-   }
+       
+       def_card(word_array[inc], punc_array[inc]);
+       document.querySelectorAll("dl").forEach(e => e.remove());
+        document.querySelectorAll("ul").forEach(e => e.remove());
+        document.querySelectorAll("table").forEach(e => e.remove());
+        document.querySelectorAll(".thumbinner").forEach(e => e.remove());
+        document.querySelectorAll(".maintenance-box").forEach(e => e.remove());
+        var anchors = document.querySelectorAll("A");
+        for (var i = 0; i < anchors.length; i++) {
+            var span = document.createElement("SPAN");
+            if (anchors[i].className) {
+                span.className = anchors[i].className;
+            }
 
-   setTimeout(timeoutLoop, delay);
-    
+            if (anchors[i].id) {
+                span.id = anchors[i].id;
+            }
 
-    document.querySelectorAll("dl").forEach(e => e.remove());
-    document.querySelectorAll("ul").forEach(e => e.remove());
-    document.querySelectorAll("table").forEach(e => e.remove());
-    document.querySelectorAll(".thumbinner").forEach(e => e.remove());
-    document.querySelectorAll(".maintenance-box").forEach(e => e.remove());
-    var anchors = document.querySelectorAll("A");
-    for (var i = 0; i < anchors.length; i++) {
-        var span = document.createElement("SPAN");
-        if (anchors[i].className) {
-            span.className = anchors[i].className;
+            span.innerHTML = anchors[i].innerHTML;
+
+            anchors[i].parentNode.replaceChild(span, anchors[i]);
+        }
+        document.getElementById('stuff').innerHTML = document.getElementById('stuff').innerHTML.replace(/<span[^>]*>/g, '').replace(/<[^>]*span>/g, '');
+
+        if (++inc < word_array.length)
+            setTimeout(timeoutLoop, delay);
         }
 
-        if (anchors[i].id) {
-            span.id = anchors[i].id;
-        }
-
-        span.innerHTML = anchors[i].innerHTML;
-
-        anchors[i].parentNode.replaceChild(span, anchors[i]);
-    }
-    document.getElementById('stuff').innerHTML = document.getElementById('stuff').innerHTML.replace(/<span[^>]*>/g, '').replace(/<[^>]*span>/g, '');
-    
+   setTimeout(timeoutLoop, delay);    
 
 }
