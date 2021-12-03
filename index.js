@@ -72,7 +72,6 @@ function crack() {
     document.querySelectorAll("table").forEach(e => e.remove());
     document.querySelectorAll(".thumbinner").forEach(e => e.remove());
     document.querySelectorAll(".maintenance-box").forEach(e => e.remove());
-    document.getElementById('stuff').innerHTML = document.getElementById('stuff').innerHTML.replace(/<span[^>]*>/g, '').replace(/<[^>]*span>/g, '');
     var anchors = document.querySelectorAll("A");
     for (var i = 0; i < anchors.length; i++) {
         var span = document.createElement("SPAN");
@@ -88,5 +87,7 @@ function crack() {
 
         anchors[i].parentNode.replaceChild(span, anchors[i]);
     }
+    document.getElementById('stuff').innerHTML = document.getElementById('stuff').innerHTML.replace(/<span[^>]*>/g, '').replace(/<[^>]*span>/g, '');
+    
 
 }
