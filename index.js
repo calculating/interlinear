@@ -60,7 +60,8 @@ function crack() {
                         }
                         
                         document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
-                    } else if (double){
+                    }
+                    if (single) {
                         document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2></div>';
                     }
                 }                
