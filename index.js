@@ -33,10 +33,10 @@ function crack() {
                 if (typeof res == 'undefined') {
                     return;
                 } else if (raw.includes("The page you specified doesn't exist.")){
-                    console.log(word.slice(word.length-3))
+                    //console.log(word.slice(word.length-3))
                     if (word.slice(word.length-3) == 'que') {
                         def_card(word.slice(0,word.length-3), punc)
-                        console.log(word.slice(0,word.length-3))
+                        //console.log(word.slice(0,word.length-3))
                         carded = true;
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
