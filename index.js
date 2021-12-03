@@ -7,7 +7,7 @@ function crack() {
     //console.log(word_array)
     //console.log(punc_array)
     
-    document.getElementByID('stuff').innerHTML = '';
+    document.getElementById('stuff').innerHTML = '';
 
     function def_card(word, punc, form_of = '') {
         url = "https://en.wiktionary.org/w/api.php?action=parse&page=" + word.toLowerCase() + "&format=json&origin=*";
@@ -54,7 +54,7 @@ function crack() {
                             content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)
                             //console.log(content)
                         }
-                        document.getElementByID('stuff').innerHTML.innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
+                        document.getElementById('stuff').innerHTML.innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
                     }
                 }                
 
@@ -72,7 +72,7 @@ function crack() {
     document.querySelectorAll("table").forEach(e => e.remove());
     document.querySelectorAll(".thumbinner").forEach(e => e.remove());
     document.querySelectorAll(".maintenance-box").forEach(e => e.remove());
-    document.getElementByID('stuff').innerHTML = document.getElementByID('stuff').innerHTML.replace(/<span[^>]*>/g, '').replace(/<[^>]*span>/g, '');
+    document.getElementById('stuff').innerHTML = document.getElementById('stuff').innerHTML.replace(/<span[^>]*>/g, '').replace(/<[^>]*span>/g, '');
     var anchors = document.querySelectorAll("A");
     for (var i = 0; i < anchors.length; i++) {
         var span = document.createElement("SPAN");
