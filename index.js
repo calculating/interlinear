@@ -61,9 +61,9 @@ function crack() {
         xhr.send();
     }
 
-    for (var i = 0; i < word_array.length; i++) {
-        console.log('eheh'+i)
-        def_card(word_array[i], punc_array[i]);
+    for (var wordCount = 0; wordCount < word_array.length; wordCount++) {
+        console.log('eheh'+wordCount)
+        def_card(word_array[wordCount], punc_array[wordCount]);
     }
 
     document.querySelectorAll("dl").forEach(e => e.remove());
