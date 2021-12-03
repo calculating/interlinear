@@ -8,6 +8,7 @@ function crack() {
 
     function def_card(word, punc, form_of = '') {
         url = "https://en.wiktionary.org/w/api.php?action=parse&page=" + word + "&format=json&origin=*";
+        console.log(url)
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url, false);
         xhr.setRequestHeader("Accept", "*/*");
