@@ -26,6 +26,7 @@ function crack() {
                 if (typeof res == 'undefined') {
                     if (word.substr(word.length-3) == 'que') {
                         def_card(word.substr(0,word.length-3), punc)
+                        return;
                 }} else {
                     if (res.includes('<span class="mw-headline" id="Latin">Latin</span>')) {
                         
@@ -41,6 +42,7 @@ function crack() {
                             while ( (result = regex.exec(res)) ) {
                                 indices.push(result.index);
                             }
+                            console.log(indices)
                             for (i = 0; i < indices.length; i++) {
                                 content += '<span>'+ res.substr(indices[i],res.search('</ol>'))
                             }
