@@ -11,7 +11,7 @@ function crack() {
 
         fetch(url).then(function(response) {
             console.log(response);
-            text = JSON.parse(response);
+            text = response.json();
             console.log(text);
             if (typeof text['parse'] !== 'undefined') {
                 if (typeof text['parse']['text'] !== 'undefined') {
