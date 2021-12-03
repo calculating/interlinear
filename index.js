@@ -30,7 +30,9 @@ function crack() {
                         def_card(word.substr(0, word.length - 3), punc)
                         return;
                     }
-                } else if (res.includes('<span class="mw-headline" id="Latin">')) {
+                } else {
+console.log('else')
+if (res.includes('<span class="mw-headline" id="Latin">')) {
                     console.log('has latin')
                     res = res.split('<span class="mw-headline" id="Latin">')[1].split('<hr>')[0]
                     if (raw.includes('Latin_non-lemma_forms') && form_of == '') {
@@ -50,7 +52,7 @@ function crack() {
                         }
 
                     }
-                }
+                }}
                 document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' +
                     punc + '</h2>' + content + '</div>';
 
