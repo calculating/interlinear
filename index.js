@@ -23,7 +23,7 @@ function crack() {
                 }}}
                 
                 content = ''
-                if (res == undefined) {
+                if (typeof res == 'undefined') {
                     if (word.substr(word.length-3) == 'que') {
                         def_card(word.substr(0,word.length-3), punc)
                 }} else {
