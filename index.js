@@ -54,7 +54,6 @@ function crack() {
                             content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)
                             //console.log(content)
                         }
-                        content = content.replace(/<span[^>]*>/g, '').replace(/<[^>]*span>/g, '');
                         document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
                     }
                 }                
@@ -73,7 +72,7 @@ function crack() {
     document.querySelectorAll("table").forEach(e => e.remove());
     document.querySelectorAll(".thumbinner").forEach(e => e.remove());
     document.querySelectorAll(".maintenance-box").forEach(e => e.remove());
-    
+    document.getElementsByTagName('body')[0].innerHTML = document.getElementsByTagName('body')[0].innerHTML.replace(/<span[^>]*>/g, '').replace(/<[^>]*span>/g, '');
     var anchors = document.querySelectorAll("A");
     for (var i = 0; i < anchors.length; i++) {
         var span = document.createElement("SPAN");
