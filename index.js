@@ -30,8 +30,8 @@ function crack() {
                 }
 
                 if (typeof res == 'undefined') {
-                    if (word.substr(word.length - 3) == 'que') {
-                        def_card(word.substr(0, word.length - 3), punc)
+                    if (word.slice(word.length - 3) == 'que') {
+                        def_card(word.slice(0, word.length - 3), punc)
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
                     res = res.split('<span class="mw-headline" id="Latin">')[1].split('<hr>')[0]
@@ -41,7 +41,7 @@ function crack() {
                         console.log(res)
                         console.log(res.search('<span class="form-of-definition use-with-mention">'))
                         console.log(res.search('form-of-definition-link'))
-                        form_trace = res.substr(res.search('<span class="form-of-definition use-with-mention">'), res.search('form-of-definition-link')-12)
+                        form_trace = res.slice(res.search('<span class="form-of-definition use-with-mention">'), res.search('form-of-definition-link')-12)
                         form_trace += '</span>'
                         //console.log(form_trace)
                         //console.log(next_word)
@@ -50,7 +50,7 @@ function crack() {
                         indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
                         content = ''
                         for (ix = 0; ix < indices.length; ix++) {
-                            content += '<span>' + res.substr(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
+                            content += '<span>' + res.slice(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
                             //console.log(content)
                         }
                         document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + 'definition' + content + '</div>';
