@@ -4,8 +4,8 @@ function crack() {
     word_array = paste.split(/\W+/);
     punc_array = paste.split(' ');
     
-    console.log(word_array)
-    console.log(punc_array)
+    //console.log(word_array)
+    //console.log(punc_array)
     
     document.getElementsByTagName('body')[0].innerHTML = '';
 
@@ -18,10 +18,10 @@ function crack() {
         xhr.setRequestHeader("Accept", "*/*");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
-                console.log(xhr.responseText);
+                //console.log(xhr.responseText);
                 raw = xhr.responseText;
                 text = JSON.parse(xhr.responseText);
-                console.log(text);
+                //console.log(text);
                 if (typeof text['parse'] !== 'undefined') {
                     if (typeof text['parse']['text'] !== 'undefined') {
                         if (typeof text['parse']['text']['*'] !== 'undefined') {
@@ -32,34 +32,29 @@ function crack() {
 
                 content = ''
                 if (typeof res == 'undefined') {
-                    console.log('error page')
                     if (word.substr(word.length - 3) == 'que') {
                         def_card(word.substr(0, word.length - 3), punc)
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
                     res = res.split('<span class="mw-headline" id="Latin">')[1].split('<hr>')[0]
-                    console.log('lemma '+ raw.includes('Latin_non-lemma_forms'))
+                    //console.log('lemma '+ raw.includes('Latin_non-lemma_forms'))
                     if (raw.includes('Latin_non-lemma_forms') && form_of == '') {
                         next_word = res.split('<span class="form-of-definition-link">')[1].split('<a href="/wiki/')[1].split('#Latin" title')[0]
                         form_trace = res.substr(res.search('<span class="form-of-definition use-with-mention">'), res.search('<span class="form-of-definition-link">',res.search('<span class="form-of-definition use-with-mention">')))
                         form_trace += '</span>'
-                        console.log('eghhh')
-                        console.log(form_trace)
-                        console.log(next_word)
+                        //console.log(form_trace)
+                        //console.log(next_word)
                         def_card(next_word, punc, form_trace);
                     } else {
-                        console.log(124432)
                         indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
                         for (ix = 0; ix < indices.length; ix++) {
-                            console.log('grabbed definition block')
                             content += '<span>' + res.substr(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
-                            console.log(content)
+                            //console.log(content)
                         }
 
                     }
                 }
                 if (content !== '') {
-                    console.log('added content')
                     document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + 'definition' + content + '</div>';
                 }
 
@@ -69,7 +64,6 @@ function crack() {
     }
 
     for (var wordCount = 0; wordCount < word_array.length; wordCount++) {
-        console.log('eheh'+wordCount)
         def_card(word_array[wordCount], punc_array[wordCount]);
     }
 
@@ -77,6 +71,8 @@ function crack() {
     document.querySelectorAll("ul").forEach(e => e.remove());
     document.querySelectorAll("table").forEach(e => e.remove());
     document.querySelectorAll(".thumbinner").forEach(e => e.remove());
+    document.querySelectorAll(".maintenance-box").forEach(e => e.remove());
+    
     var anchors = document.querySelectorAll("A");
     for (var i = 0; i < anchors.length; i++) {
         var span = document.createElement("SPAN");
