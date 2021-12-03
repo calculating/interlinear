@@ -37,12 +37,13 @@ function crack() {
                         form_trace = res.split('<span class=\"form-of-definition use-with-mention\">')[1].split('</span></li>')[0]
                         wordSearch(next_word, punc, form_trace);
                     } else {
-                        var regex = /(noun|pronoun|verb|adjective|adverb|preposition|conjunction|interjection)<\/span><span class="mw-editsection">/i, result, indices = [];
+                        var regex = /(noun<\/span><span class="mw-editsection">|pronoun<\/span><span class="mw-editsection">|verb<\/span><span class="mw-editsection">|adjective<\/span><span class="mw-editsection">|adverb<\/span><span class="mw-editsection">|preposition<\/span><span class="mw-editsection">|conjunction<\/span><span class="mw-editsection">|interjection<\/span><span class="mw-editsection">)/i, result, indices = [];
                         while ((result = regex.exec(res))) {
                             indices.push(result.index);
                         }
                         console.log(indices)
                         for (i = 0; i < indices.length; i++) {
+                            console.log('grabbed definition block')
                             content += '<span>' + res.substr(indices[i], res.search('</ol>'))
                         }
 
