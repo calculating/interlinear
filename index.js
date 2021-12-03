@@ -56,7 +56,7 @@ function crack() {
                     }
                 }
                 document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' +
-                    punc + '</h2>' + content + '</div>';
+                    punc + '</h2>' + form_of + 'definition' + content + '</div>';
 
             }
         }
