@@ -103,7 +103,7 @@ function crack() {
         }
         document.getElementById('stuff').innerHTML = document.getElementById('stuff').innerHTML.replace(/<span[^>]*>/g, '').replace(/<[^>]*span>/g, '');
 
-        if (++inc < word_array.length)
+        if (++inc < word_array.length - 1)
             setTimeout(timeoutLoop, delay);
         }
 
