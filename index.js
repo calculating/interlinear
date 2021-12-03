@@ -14,7 +14,7 @@ function crack() {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
 
-
+                res = 'oop'
                 text = xhr.responseText;
                 if (typeof text['parse'] !== 'undefined') {
                     if (typeof text['parse']['text'] !== 'undefined') {
@@ -25,8 +25,7 @@ function crack() {
                 }
 
                 content = ''
-                if (typeof res == 'undefined') {
-                    console.log('fuck')
+                if (res == 'oop') {
                     if (word.substr(word.length - 3) == 'que') {
                         def_card(word.substr(0, word.length - 3), punc)
                         return;
