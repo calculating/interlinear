@@ -51,16 +51,14 @@ function crack() {
                         def_card(next_word, punc, form_trace);
                         single=false;
                     } else {
-                        indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
-                        console.log(word)
-                        console.log(indices)
-                        console.log(indices[1]['index'])
+                        indices = res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
+                        
                         content = ''
-                        for (ix = 0; ix < indices.length; ix++) {
-                            block = res.slice(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
-                            content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)
-                            //console.log(content)
+                        for (const match of indices){
+                            block = res.slice(match.index, res.search('</ol>',match.index))
+                            content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)    
                         }
+                        
                         document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
                     } else if (double){
                         document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2></div>';
