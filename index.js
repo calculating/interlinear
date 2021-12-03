@@ -19,6 +19,7 @@ function crack() {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 console.log(xhr.responseText);
+                raw = xhr.responseText;
                 text = JSON.parse(xhr.responseText);
                 console.log(text);
                 if (typeof text['parse'] !== 'undefined') {
@@ -36,7 +37,6 @@ function crack() {
                         def_card(word.substr(0, word.length - 3), punc)
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
-                    raw = res;
                     res = res.split('<span class="mw-headline" id="Latin">')[1].split('<hr>')[0]
                     console.log('lemma '+ raw.includes('Latin_non-lemma_forms'))
                     if (raw.includes('Latin_non-lemma_forms') && form_of == '') {
