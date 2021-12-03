@@ -52,8 +52,8 @@ function crack() {
 
         }).then(function(data) {
             console.log(data);
-        }).catch(function() {
-            console.log("Booo");
+        }).catch(function (err) {
+            console.log(err.message);
         });
 
     }
