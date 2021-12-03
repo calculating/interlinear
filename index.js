@@ -10,6 +10,7 @@ function crack() {
         url = "https://en.wiktionary.org/w/api.php?action=parse&page=" + word + "&format=json&origin=*";
 
         fetch(url).then(function(response) {
+            console.log(response);
             text = JSON.parse(response);
             console.log(text);
             if (typeof text['parse'] !== 'undefined') {
