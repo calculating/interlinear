@@ -10,8 +10,20 @@
     <div id="inputArea" style="text-align: center;">
         <input type="input" class="form__field" placeholder="Paste latin here..." name="latinpaste" id='paste' required />
         <label for="packet" class="form__label"></label>
-        <button class="button" onclick="crack()">Translate</button>
+        <button class="button" id="translt" onclick="crack()">Translate</button>
     </div>
+    
+    <script>
+        input.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("translt").click();
+        }
+        });
+    </script>
 
 </body>
 </html>
