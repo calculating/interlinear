@@ -31,8 +31,9 @@ function crack() {
                 }
                 
                 if (typeof res == 'undefined') {
-                    if (word.slice(word.length - 3) == 'que') {
+                    if (word.slice(0, word.length - 3) == 'que') {
                         def_card(word.slice(0, word.length - 3), punc)
+                        console.log('eque')
                         carded = true;
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
