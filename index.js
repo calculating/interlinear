@@ -16,9 +16,9 @@ function crack() {
                 
                 
                 text = xhr.responseText;
-                if (typeof text['parse'] !== undefined) {
-                    if (typeof text['parse']['text'] !== undefined) {
-                        if (typeof text['parse']['text']['*'] !== undefined) {
+                if (typeof text['parse'] !== 'undefined') {
+                    if (typeof text['parse']['text'] !== 'undefined') {
+                        if (typeof text['parse']['text']['*'] !== 'undefined') {
                             res = text['parse']['text']['*'];
                 }}}
                 
