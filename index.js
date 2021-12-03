@@ -15,7 +15,6 @@ function crack() {
             if (xhr.readyState === 4) {
 
                 text = JSON.parse(xhr.responseText);
-                console.log(text)
                 if (typeof text['parse'] !== 'undefined') {
                     if (typeof text['parse']['text'] !== 'undefined') {
                         if (typeof text['parse']['text']['*'] !== 'undefined') {
