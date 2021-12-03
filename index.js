@@ -41,7 +41,7 @@ function crack() {
                         //console.log(res)
                         //console.log(res.search('<span class="form-of-definition use-with-mention">'))
                         //console.log(res.search('form-of-definition-link'))
-                        form_trace = res.slice(res.search('<span class="form-of-definition use-with-mention">'), res.search('<span class="form-of-definition-link">'))
+                        form_trace = res.slice(res.search('<span class="form-of-definition use-with-mention">'), res.search('<span class="form-of-definition-link">')) + "a "
                         //form_trace += '</span>'
                         //console.log(form_trace)
                         //console.log(next_word)
