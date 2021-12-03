@@ -30,9 +30,9 @@ function crack() {
                         def_card(word.substr(0, word.length - 3), punc)
                         return;
                     }
-                } else if (res.includes('<span class=\"mw-headline\" id=\"Latin\">Latin</span>')) {
+                } else if (res.includes('<span class="mw-headline" id="Latin">')) {
                     console.log('has latin')
-                    res = res.split('<span class="mw-headline" id="Latin">Latin</span>')[1].split('<hr>')[0]
+                    res = res.split('<span class="mw-headline" id="Latin">')[1].split('<hr>')[0]
                     if (raw.includes('Latin_non-lemma_forms') && form_of == '') {
                         next_word = res.split('<span class="form-of-definition-link">')[1].split('<a href="/wiki/')[1].split('#Latin" title')[0]
                         form_trace = res.split('<span class=\"form-of-definition use-with-mention\">')[1].split('</span></li>')[0]
