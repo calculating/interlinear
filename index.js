@@ -34,17 +34,16 @@ function crack() {
                     console.log('error page')
                     if (word.substr(word.length - 3) == 'que') {
                         def_card(word.substr(0, word.length - 3), punc)
-                        return;
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
                     raw = res;
                     res = res.split('<span class="mw-headline" id="Latin">')[1].split('<hr>')[0]
+                    console.log('lemma '+ raw.includes('Latin_non-lemma_forms'))
                     if (raw.includes('Latin_non-lemma_forms') && form_of == '') {
                         next_word = res.split('<span class="form-of-definition-link">')[1].split('<a href="/wiki/')[1].split('#Latin" title')[0]
                         form_trace = res.substr(res.search('<span class="form-of-definition use-with-mention">'), res.search('</span></li>',res.search('<span class="form-of-definition use-with-mention">')))
                         console.log('eghhh')
                         def_card(next_word, punc, form_trace);
-                        return;
                     } else {
                         console.log(124432)
                         indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
@@ -55,8 +54,9 @@ function crack() {
 
                     }
                 }
-                document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' +
-                    punc + '</h2>' + form_of + 'definition' + content + '</div>';
+                if (content !== '') {
+                    document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + 'definition' + content + '</div>';
+                }
 
             }
         }
