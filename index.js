@@ -38,7 +38,7 @@ function crack() {
                         next_word = res.split('<span class="form-of-definition-link">')[1].split('<a href="/wiki/')[1].split('#Latin" title')[0]
                         form_trace = res.split('<span class=\"form-of-definition use-with-mention\">')[1].split('</span></li>')[0]
                         console.log('eghhh')
-                        wordSearch(next_word, punc, form_trace);
+                        def_card(next_word, punc, form_trace);
                     } else {
                         console.log(124432)
                         indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
