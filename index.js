@@ -31,14 +31,12 @@ function crack() {
                         return;
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
-                    console.log('has latin')
                     res = res.split('<span class="mw-headline" id="Latin">')[1].split('<hr>')[0]
                     if (res.includes('Latin_non-lemma_forms') && form_of == '') {
                         next_word = res.split('<span class="form-of-definition-link">')[1].split('<a href="/wiki/')[1].split('#Latin" title')[0]
                         form_trace = res.split('<span class=\"form-of-definition use-with-mention\">')[1].split('</span></li>')[0]
                         wordSearch(next_word, punc, form_trace);
                     } else {
-                        console.log('looking for definitions')
                         var regex = /(noun|pronoun|verb|adjective|adverb|preposition|conjunction|interjection)<\/span><span class="mw-editsection">/i, result, indices = [];
                         while ((result = regex.exec(res))) {
                             indices.push(result.index);
