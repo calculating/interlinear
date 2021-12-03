@@ -62,10 +62,19 @@ function crack() {
         }
         xhr.send();
     }
+    
+    var inc = 0,
+       max = 9999;
+       delay = 100; // 100 milliseconds
 
-    for (var wordCount = 0; wordCount < word_array.length; wordCount++) {
-        def_card(word_array[wordCount], punc_array[wordCount]);
-    }
+   function timeoutLoop() {
+      def_card(word_array[inc], punc_array[inc]);
+      if (++inc < word_array.length)
+         setTimeout(timeoutLoop, delay);
+   }
+
+   setTimeout(timeoutLoop, delay);
+    
 
     document.querySelectorAll("dl").forEach(e => e.remove());
     document.querySelectorAll("ul").forEach(e => e.remove());
