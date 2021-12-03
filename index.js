@@ -37,8 +37,10 @@ function crack() {
                     if (res.includes('Latin_non-lemma_forms') && form_of == '') {
                         next_word = res.split('<span class="form-of-definition-link">')[1].split('<a href="/wiki/')[1].split('#Latin" title')[0]
                         form_trace = res.split('<span class=\"form-of-definition use-with-mention\">')[1].split('</span></li>')[0]
+                        console.log('eghhh')
                         wordSearch(next_word, punc, form_trace);
                     } else {
+                        console.log(124432)
                         var regex = /(noun<\/span><span class="mw-editsection">|pronoun<\/span><span class="mw-editsection">|verb<\/span><span class="mw-editsection">|adjective<\/span><span class="mw-editsection">|adverb<\/span><span class="mw-editsection">|preposition<\/span><span class="mw-editsection">|conjunction<\/span><span class="mw-editsection">|interjection<\/span><span class="mw-editsection">)/i, result, indices = [];
                         while ((result = regex.exec(res))) {
                             indices.push(result.index);
