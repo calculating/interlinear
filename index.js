@@ -38,7 +38,7 @@ function crack() {
                     //console.log('lemma '+ raw.includes('Latin_non-lemma_forms'))
                     if (raw.includes('Latin_non-lemma_forms') && form_of == '') {
                         next_word = res.split('<span class="form-of-definition-link">')[1].split('<a href="/wiki/')[1].split('#Latin" title')[0]
-                        form_trace = res.substr(res.search('<span class="form-of-definition use-with-mention">'), res.search('<span class="form-of-definition-link">'))
+                        form_trace = res.substr(res.search('<span class="form-of-definition use-with-mention">'), res.search('form-of-definition-link')-12)
                         form_trace += '</span>'
                         //console.log(form_trace)
                         //console.log(next_word)
