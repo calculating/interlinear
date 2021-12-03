@@ -41,8 +41,8 @@ function crack() {
                         //console.log(res)
                         //console.log(res.search('<span class="form-of-definition use-with-mention">'))
                         //console.log(res.search('form-of-definition-link'))
-                        form_trace = res.slice(res.search('<span class="form-of-definition use-with-mention">'), res.search('form-of-definition-link')-12)
-                        form_trace += '</span>'
+                        form_trace = res.slice(res.search('<span class="form-of-definition use-with-mention">'), res.search('<span class="form-of-definition-link">'))
+                        //form_trace += '</span>'
                         //console.log(form_trace)
                         //console.log(next_word)
                         def_card(next_word, punc, form_trace);
@@ -53,7 +53,7 @@ function crack() {
                             content += '<span>' + res.slice(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
                             //console.log(content)
                         }
-                        document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + 'definition' + content + '</div>';
+                        document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
                     }
                 }                
 
