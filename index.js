@@ -54,7 +54,7 @@ function crack() {
                             content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)
                             //console.log(content)
                         }
-                        document.getElementById('stuff').innerHTML.innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
+                        document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
                     }
                 }                
 
