@@ -9,7 +9,7 @@ function crack() {
     
     document.getElementsByTagName('body')[0].innerHTML = '';
 
-    function def_card(word, punc, form_of = 'no') {
+    function def_card(word, punc, form_of = '') {
         console.log(form_of)
         url = "https://en.wiktionary.org/w/api.php?action=parse&page=" + word.toLowerCase() + "&format=json&origin=*";
         console.log(url)
@@ -37,8 +37,9 @@ function crack() {
                         return;
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
+                    raw = res;
                     res = res.split('<span class="mw-headline" id="Latin">')[1].split('<hr>')[0]
-                    if (res.includes('Latin_non-lemma_forms') && form_of == 'no') {
+                    if (raw.includes('Latin_non-lemma_forms') && form_of == '') {
                         next_word = res.split('<span class="form-of-definition-link">')[1].split('<a href="/wiki/')[1].split('#Latin" title')[0]
                         form_trace = res.split('<span class=\"form-of-definition use-with-mention\">')[1].split('</span></li>')[0]
                         console.log('eghhh')
