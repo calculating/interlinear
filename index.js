@@ -45,6 +45,7 @@ function crack() {
                         def_card(next_word, punc, form_trace);
                     } else {
                         indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
+                        content = ''
                         for (ix = 0; ix < indices.length; ix++) {
                             content += '<span>' + res.substr(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
                             //console.log(content)
