@@ -29,7 +29,7 @@ function crack() {
                 if (typeof res == 'undefined') {
                     console.log('error page')
                     if (word.substr(word.length - 3) == 'que') {
-                        def_card(word.substr(0, word.length - 3), punc)
+                        //def_card(word.substr(0, word.length - 3), punc)
                         return;
                     }
                 } else if (res.includes('<span class="mw-headline" id="Latin">')) {
