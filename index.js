@@ -50,6 +50,7 @@ function crack() {
                         indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
                         console.log(word)
                         console.log(indices)
+                        console.log(indices[1]['index'])
                         content = ''
                         for (ix = 0; ix < indices.length; ix++) {
                             block = res.slice(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
