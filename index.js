@@ -50,7 +50,8 @@ function crack() {
                         indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
                         content = ''
                         for (ix = 0; ix < indices.length; ix++) {
-                            content += '<span>' + res.slice(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
+                            block = res.slice(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
+                            content += '<span>' + block.slice(0,block.search('[')) + block.slice(block.search(']'),block.length)
                             //console.log(content)
                         }
                         document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
