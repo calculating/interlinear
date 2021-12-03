@@ -29,7 +29,6 @@ function crack() {
                     }
                 }
 
-                content = ''
                 if (typeof res == 'undefined') {
                     if (word.substr(word.length - 3) == 'que') {
                         def_card(word.substr(0, word.length - 3), punc)
@@ -50,12 +49,9 @@ function crack() {
                             content += '<span>' + res.substr(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
                             //console.log(content)
                         }
-
+                        document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + 'definition' + content + '</div>';
                     }
-                }
-                if (content !== '') {
-                    document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + 'definition' + content + '</div>';
-                }
+                }                
 
             }
         }
