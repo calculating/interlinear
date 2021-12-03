@@ -48,6 +48,8 @@ function crack() {
                         def_card(next_word, punc, form_trace);
                     } else {
                         indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
+                        console.log(word)
+                        console.log(indices)
                         content = ''
                         for (ix = 0; ix < indices.length; ix++) {
                             block = res.slice(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
