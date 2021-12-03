@@ -31,6 +31,8 @@ function crack() {
                 }
                 
                 if (typeof res == 'undefined') {
+                    return;
+                } else if (raw.includes("The page you specified doesn't exist.")){
                     console.log(word.slice(word.Length-3))
                     if (word.slice(word.Length-3) == 'que') {
                         def_card(word.slice(0,word.Length-3), punc)
