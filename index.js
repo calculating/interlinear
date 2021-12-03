@@ -31,8 +31,8 @@ function crack() {
                 }
                 
                 if (typeof res == 'undefined') {
-                    if (word.Substring(word.Length-3) == 'que') {
-                        def_card(word.Substring(word.Length-3), punc)
+                    if (word.slice(word.Length-3) == 'que') {
+                        def_card(word.slice(0,word.Length-3), punc)
                         console.log('eque')
                         carded = true;
                     }
