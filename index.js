@@ -13,7 +13,7 @@ function crack() {
         xhr.setRequestHeader("Accept", "*/*");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
-
+                console.log(xhr.responseText);
                 text = JSON.parse(xhr.responseText);
                 console.log(text);
                 if (typeof text['parse'] !== 'undefined') {
