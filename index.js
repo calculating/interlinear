@@ -9,9 +9,9 @@ function crack() {
     function def_card(word, punc, form_of = '') {
         url = "https://en.wiktionary.org/w/api.php?action=parse&page=" + word + "&format=json&origin=*";
 
-        fetch(url).then(function(response) {
-            console.log(response);
-            text = response.json();
+        fetch(url).then(function(data) {
+            console.log(data);
+            text = data.json();
             console.log(text);
             if (typeof text['parse'] !== 'undefined') {
                 if (typeof text['parse']['text'] !== 'undefined') {
@@ -51,8 +51,8 @@ function crack() {
             document.getElementsByTagName('body')[0].innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' +
                 punc + '</h2>' + content + '</div>';
 
-        }).then(function(data) {
-            console.log(data);
+        }).then(function(response) {
+            console.log(response);
         }).catch(function (err) {
             console.log(err.message);
         });
