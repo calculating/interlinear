@@ -31,6 +31,7 @@ function crack() {
                 }
                 
                 if (typeof res == 'undefined') {
+                    console.log(word.slice(word.Length-3))
                     if (word.slice(word.Length-3) == 'que') {
                         def_card(word.slice(0,word.Length-3), punc)
                         console.log('eque')
