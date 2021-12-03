@@ -56,7 +56,7 @@ function crack() {
     }
     
     for (var i = 0; i < word_array.length; i++) {
-        def_word(word_array[i], punc_array[i]);
+        def_card(word_array[i], punc_array[i]);
     }
     
     document.querySelectorAll("dl").forEach(e => e.remove());
