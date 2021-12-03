@@ -29,7 +29,7 @@ function crack() {
                         return;
                 }} else {
                     if (res.includes('<span class="mw-headline" id="Latin">Latin</span>')) {
-                        
+                        console.log('has latin')
                         res = res.split('<span class="mw-headline" id="Latin">Latin</span>')[1].split('<hr>')[0]
                     
                         if (raw.includes('Latin_non-lemma_forms') && form_of == '') {
@@ -37,6 +37,7 @@ function crack() {
                             form_trace = res.split('<span class=\"form-of-definition use-with-mention\">')[1].split('</span></li>')[0]
                             wordSearch(next_word, punc, form_trace);
                         } else {
+                            console.log('looking for definitions')
                             regex = /(noun|pronoun|verb|adjective|adverb|preposition|conjunction|interjection)<\/span><span class="mw-editsection">/i, 
                                 result, indices = [];
                             while ( (result = regex.exec(res)) ) {
