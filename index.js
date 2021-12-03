@@ -46,9 +46,9 @@ function crack() {
                     } else {
                         console.log(124432)
                         indices = [...res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
-                        for (i = 0; i < indices.length; i++) {
+                        for (ix = 0; ix < indices.length; ix++) {
                             console.log('grabbed definition block')
-                            content += '<span>' + res.substr(indices[i]['index'], res.search('</ol>'))
+                            content += '<span>' + res.substr(indices[ix]['index'], res.search('</ol>',indices[ix]['index']))
                         }
 
                     }
@@ -68,6 +68,7 @@ function crack() {
 
     document.querySelectorAll("dl").forEach(e => e.remove());
     document.querySelectorAll("ul").forEach(e => e.remove());
+    document.querySelectorAll("table").forEach(e => e.remove());
     document.querySelectorAll(".thumbinner").forEach(e => e.remove());
     var anchors = document.querySelectorAll("A");
     for (var i = 0; i < anchors.length; i++) {
