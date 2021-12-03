@@ -41,14 +41,10 @@ function crack() {
                         wordSearch(next_word, punc, form_trace);
                     } else {
                         console.log(124432)
-                        var regex = /(noun<\/span><span class="mw-editsection">|pronoun<\/span><span class="mw-editsection">|verb<\/span><span class="mw-editsection">|adjective<\/span><span class="mw-editsection">|adverb<\/span><span class="mw-editsection">|preposition<\/span><span class="mw-editsection">|conjunction<\/span><span class="mw-editsection">|interjection<\/span><span class="mw-editsection">)/i, result, indices = [];
-                        while ((result = regex.exec(res))) {
-                            indices.push(result.index);
-                        }
-                        console.log(indices)
+                        indices = [...thing.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
                         for (i = 0; i < indices.length; i++) {
                             console.log('grabbed definition block')
-                            content += '<span>' + res.substr(indices[i], res.search('</ol>'))
+                            content += '<span>' + res.substr(indices[i]['index'], res.search('</ol>'))
                         }
 
                     }
