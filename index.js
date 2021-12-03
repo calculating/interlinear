@@ -51,7 +51,7 @@ function crack() {
                         def_card(next_word, punc, form_trace);
                         single=false;
                     } else {
-                        indices = res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)]
+                        indices = res.matchAll(/(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g)
                         
                         content = ''
                         for (const match of indices){
