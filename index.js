@@ -1,6 +1,6 @@
 function crack() {
     paste = document.getElementsByName('latinpaste')[0].value.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
+    paste += ' '
     word_array = paste.split(/\W+/);
     punc_array = paste.split(' ');
     
