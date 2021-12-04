@@ -55,7 +55,7 @@ function crack() {
                         carded = true;
                     } else {
                         regex = /(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g;
-                        indices = res.matchAll(regex)
+                        indices = [...res.matchAll(regex)]
                         
                         content = ''
                         block = res.slice(indices[0].index, res.search('</ol>',indices[0].index))
