@@ -61,7 +61,6 @@ function crack() {
                         block = res.slice(indix.index, res.indexOf('</ol>',indix.index))
                         content += block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)
                         
-                        content = content.replace(/<[^>]*>/g, '');
                         document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
                         carded = true;
                     }
