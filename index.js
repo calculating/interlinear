@@ -61,7 +61,7 @@ function crack() {
                         block = res.slice(indices[0].index, res.search('</ol>',indices[0].index))
                         content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)    
                         
-                        document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
+                        document.getElementById('stuff').innerHTML += '<div style="width:12%; height:30em; overflow-y:auto; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
                         carded = true;
                     }
                 }                
@@ -70,7 +70,7 @@ function crack() {
         }
         xhr.send();
         if (!carded) {
-            document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2></div>';
+            document.getElementById('stuff').innerHTML += '<div style="width:12%; height:30em; overflow-y:auto; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2></div>';
         }
     }
     
