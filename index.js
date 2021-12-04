@@ -59,10 +59,8 @@ function crack() {
                         
                         content = ''
                         for (const match of indices){
-                            console.log(match)
-                            console.log(match.index)
                             block = res.slice(match.index, res.search('</ol>',match.index))
-                            content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)    
+                            content += block   
                         }
                         
                         document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
