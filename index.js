@@ -55,11 +55,11 @@ function crack() {
                         carded = true;
                     } else {
                         regex = /(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g;
-                        indix = res.match(regex)
+                        indices = res.matchAll(regex)
                         
                         content = ''
-                        block = res.slice(indix.index, res.indexOf('</ol>',indix.index))
-                        content += block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)
+                        block = res.slice(indices[0].index, res.search('</ol>',indices[0].index))
+                        content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)    
                         
                         document.getElementById('stuff').innerHTML += '<div style="width:12%; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
                         carded = true;
