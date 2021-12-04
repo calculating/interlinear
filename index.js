@@ -85,7 +85,7 @@ function crack() {
         document.querySelectorAll("table").forEach(e => e.remove());
         document.querySelectorAll(".thumbinner").forEach(e => e.remove());
         document.querySelectorAll(".maintenance-box").forEach(e => e.remove());
-        var anchors = document.querySelectorAll("A");
+        var anchors = document.getElementById('stuff').querySelectorAll("A");
         for (var i = 0; i < anchors.length; i++) {
             var span = document.createElement("SPAN");
             if (anchors[i].className) {
