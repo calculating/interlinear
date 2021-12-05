@@ -60,8 +60,8 @@ function crack() {
                         content = ''
                         block = res.slice(indices[0].index, res.search('</ol>',indices[0].index))
                         content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)    
-                        
-                        document.getElementById('stuff').innerHTML += '<div style="width:12%; height:30em; overflow-y:auto; padding-right:3%; font-size:12px; float:left;"><h2>' + punc + '</h2>' + form_of + content + '</div>';
+                        content = content.replace(/<a[^>]*>/g, '').replace(/<[^>]*a>/g, '');
+                        document.getElementById('stuff').innerHTML += '<div style="width:12%; height:30em; overflow-y:auto; padding-right:3%; font-size:12px; float:left;"><h2><a href="https://en.wiktionary.org/wiki/'+word+'#Latin" target="_blank">' + punc + '</a></h2>' + form_of + content + '</div>';
                         carded = true;
                     }
                 }                
@@ -85,22 +85,6 @@ function crack() {
         document.querySelectorAll("table").forEach(e => e.remove());
         document.querySelectorAll(".thumbinner").forEach(e => e.remove());
         document.querySelectorAll(".maintenance-box").forEach(e => e.remove());
-        var anchors = document.getElementById('stuff').querySelectorAll("A");
-        for (var i = 0; i < anchors.length; i++) {
-            var span = document.createElement("SPAN");
-            if (anchors[i].className) {
-                span.className = anchors[i].className;
-            }
-
-            if (anchors[i].id) {
-                span.id = anchors[i].id;
-            }
-
-            span.innerHTML = anchors[i].innerHTML;
-
-            anchors[i].parentNode.replaceChild(span, anchors[i]);
-        }
-        document.getElementById('stuff').innerHTML = document.getElementById('stuff').innerHTML.replace(/<span[^>]*>/g, '').replace(/<[^>]*span>/g, '');
 
         if (++inc < word_array.length - 1)
             setTimeout(timeoutLoop, delay);
