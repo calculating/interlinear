@@ -9,7 +9,7 @@ function crack() {
     
     document.getElementById('stuff').innerHTML = '';
 
-    function def_card(word, punc, form_of = '') {
+    function def_card(word, punc, form_of = '', previous_word = '') {
         carded = false;
         url = "https://en.wiktionary.org/w/api.php?action=parse&page=" + word.toLowerCase() + "&format=json&origin=*";
         //console.log(url)
@@ -52,7 +52,7 @@ function crack() {
                         //console.log(form_trace)
                         //console.log(next_word)
                         
-                        def_card(next_word, punc, form_trace.replace(/<a[^>]*>/g, '').replace(/<[^>]*a>/g, ''));
+                        def_card(next_word, punc, form_trace.replace(/<a[^>]*>/g, '').replace(/<[^>]*a>/g, ''), word);
                         carded = true;
                     } else {
                         regex = /(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g;
@@ -62,6 +62,11 @@ function crack() {
                         block = res.slice(indices[0].index, res.search('</ol>',indices[0].index))
                         content += '<span>' + block.slice(0,block.search('\\[')) + block.slice(block.search('\\]')+1,block.length)    
                         content = content.replace(/<a[^>]*>/g, '').replace(/<[^>]*a>/g, '');
+                        
+                        if (previous_word !== '') {
+                            word = previous_word;
+                        }
+                        
                         document.getElementById('stuff').innerHTML += '<div style="width:12%; height:30em; overflow-y:auto; padding-right:3%; font-size:12px; float:left;"><h2><a href="https://en.wiktionary.org/wiki/'+word+'#Latin" target="_blank">' + punc + '</a></h2>' + form_of + content + '</div>';
                         carded = true;
                     }
