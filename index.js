@@ -51,7 +51,8 @@ function crack() {
                         //form_trace += '</span>'
                         //console.log(form_trace)
                         //console.log(next_word)
-                        def_card(next_word, punc, form_trace);
+                        
+                        def_card(next_word, punc, form_trace.replace(/<a[^>]*>/g, '').replace(/<[^>]*a>/g, ''););
                         carded = true;
                     } else {
                         regex = /(Noun|Pronoun|Verb|Adjective|Adverb|Preposition|Particle|Participle|Determiner|Conjunction|Interjection)<\/span><span class="mw-editsection">/g;
