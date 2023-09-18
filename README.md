@@ -1,2 +1,2 @@
-# interlinear
-Interlinear vocabulary for Latin.
+# Interlinear translation for Latin
+![](traducamus.png)
